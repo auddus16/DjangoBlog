@@ -6,8 +6,9 @@ from django.db import models
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
+    hook = models.CharField(max_length=50, default="이 글은 소개소개")
     content = models.TextField()
-    
+
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)   # 이미지가 없어도 괜찮다. blank 속성 값 지정
     attached_file = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
 

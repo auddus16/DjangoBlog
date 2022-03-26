@@ -31,7 +31,6 @@ def single_post_page(request, pk):
         }
     )
 
-
 class PostList(ListView):
     model = Post
     ordering = '-pk'
