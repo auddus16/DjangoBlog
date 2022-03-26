@@ -1,3 +1,5 @@
+import os.path
+
 from django.db import models
 
 # Create your models here.
@@ -18,3 +20,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
+
+    def get_file_name(self):    # 파일명이 경로가 아닌 이름으로 나오게끔, 백에서
+        return os.path.basename(self.attached_file.name)
