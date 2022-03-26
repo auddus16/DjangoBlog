@@ -120,3 +120,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# User media files
+
+MEDIA_URL = '/media/'   # URL 접두어, 사용자가 만드는 모든 파일 앞에 붙을 경로
+MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
