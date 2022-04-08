@@ -13,6 +13,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/blog/category/{self.slug}/'
+
     # 복수형 내가 정하고 싶을 때 (inner class)
     class Meta:
         verbose_name_plural = 'Categories'
@@ -40,5 +43,5 @@ class Post(models.Model):
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
 
-    def get_file_name(self):    # 파일명이 경로가 아닌 이름으로 나오게끔, 백에서
+    def get_file_name(self):    # 파일명이 경로가 아닌 이름으로 나오게 끔, 백에서
         return os.path.basename(self.attached_file.name)
