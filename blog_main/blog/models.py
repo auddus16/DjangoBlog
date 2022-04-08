@@ -15,7 +15,8 @@ class Category(models.Model):
 
     # 복수형 내가 정하고 싶을 때 (inner class)
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = 'Categories'
+
 
 # Post 게시글 모델
 class Post(models.Model):
@@ -27,6 +28,7 @@ class Post(models.Model):
     attached_file = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
 
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
