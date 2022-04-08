@@ -4,7 +4,20 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+# Category 카테고리 모델
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True) # URL에 들어갈 수 있는 문자열필드
 
+    # method
+    def __str__(self):
+        return self.name
+
+    # 복수형 내가 정하고 싶을 때 (inner class)
+    class Meta:
+        verbose_name_plural = 'categories'
+
+# Post 게시글 모델
 class Post(models.Model):
     title = models.CharField(max_length=30)
     hook = models.CharField(max_length=50, default="이 글은 소개소개")
