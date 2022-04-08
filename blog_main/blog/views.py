@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView, DetailView
 
-from .models import Post, Category
+from .models import Post, Category, Tag
 
 
 # def index(request):
@@ -69,4 +69,17 @@ def show_category_posts(request, slug):
         'post_list' : post_list # 위에서 만든 카테고리와 일치하는 게시글 리스트
     }
 
+    return render(request, 'blog/post_list.html', context)
+
+
+def show_tag_posts(request, slug):
+    tag = Tag.objects.get(slug=slug)
+    post_list = tag.post_set.all() # tag가 나(tag)를 참조하고 있는 post를 전부 가져와라.
+
+    context = {
+        'categories': Category.objects.all(),
+        'count_posts_without_category': Post.objects.filter(category=None).count(),
+        'tag' : tag,
+        'post_list' : post_list
+    }
     return render(request, 'blog/post_list.html', context)
