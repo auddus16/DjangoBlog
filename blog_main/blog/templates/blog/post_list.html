@@ -6,7 +6,13 @@
 
 <h1>Blog {% if category %} in category '{{ category }}' {% endif %}
     {% if tag %} with tag '{{ tag }}' {% endif %}</h1>
-
+    <hr><br>
+    {% if user.is_authenticated %}
+        {% if user.is_superuser or user.is_staff %}
+            <a class="btn btn-info btn-sm float-right" href="blog/create_post" role=""button><i class="fas fa-pen"></i>&nbsp;&nbsp;New Post</a>
+        {% endif %}
+    {% endif %}
+    <br><br><br>
     {% for p in post_list %}
         <!-- Blog Post -->
         <div class="card mb-4">

@@ -7,5 +7,8 @@ urlpatterns = [
     path('<int:pk>/', views.PostDetail.as_view()),  # <자료형:변수명> -> single_post_page의 매개변수로 넘어간다.
     # path('', views.index)
     path('category/<str:slug>/', views.show_category_posts),
-    path('tag/<str:slug>/', views.show_tag_posts)
+    path('tag/<str:slug>/', views.show_tag_posts),
+
+    path('create_post/', views.PostCreate.as_view()),
+    path('update_post/<int:pk>/',views.PostUpdate.as_view() )
 ]
