@@ -6,6 +6,10 @@ from django.db import models
 # Create your models here.
 
 # Tag 태그 모델
+from markdown import markdown
+from markdownx.models import MarkdownxField
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=200, unique=True, allow_unicode=True) # URL에 들어갈 수 있는 문자열 필드
@@ -39,7 +43,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=30)
     hook = models.CharField(max_length=50, default="이 글은 소개소개")
-    content = models.TextField()
+    content = MarkdownxField()
 
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)   # 이미지가 없어도 괜찮다. blank 속성 값 지정
     attached_file = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
@@ -60,3 +64,7 @@ class Post(models.Model):
 
     def get_file_name(self):    # 파일명이 경로가 아닌 이름으로 나오게 끔, 백에서
         return os.path.basename(self.attached_file.name)
+
+    def get_markdown_content(self):
+        return markdown(self.content)
+    

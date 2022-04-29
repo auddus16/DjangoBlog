@@ -9,7 +9,7 @@
     <hr><br>
     {% if user.is_authenticated %}
         {% if user.is_superuser or user.is_staff %}
-            <a class="btn btn-info btn-sm float-right" href="blog/create_post" role=""button><i class="fas fa-pen"></i>&nbsp;&nbsp;New Post</a>
+            <a class="btn btn-info btn-sm float-right" href="/blog/create_post" role=""button><i class="fas fa-pen"></i>&nbsp;&nbsp;New Post</a>
         {% endif %}
     {% endif %}
     <br><br><br>
@@ -24,6 +24,7 @@
             <div class="card-body">
                 <h2 class="card-title">{{ p.title}}</h2>
                 <p class="card-text">{{ p.hook | truncatewords:30 }}</p>
+            <p class="card-text">{{ p.get_markdown_contentcontent | safe }}</p>
                 <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
                 {% if p.tags.exists %}
                     <br/>

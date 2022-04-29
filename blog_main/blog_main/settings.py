@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 앱 단위. admin, blog, single_pages -> 기능별로 분리된 앱으로 취급
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'single_pages'
+    'single_pages',
+    'crispy_forms',
+    'markdownx'
 ]
 
 MIDDLEWARE = [
@@ -122,6 +124,6 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 # User media files
-
 MEDIA_URL = '/media/'   # URL 접두어, 사용자가 만드는 모든 파일 앞에 붙을 경로
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -35,7 +35,7 @@
         <hr>
 
         <!-- Post Content -->
-        <p>{{ post.content }}</p>
+        <p>{{ post.get_markdown_contentcontent | safe}}</p>
         <hr>
 
       <!-- file download https://getbootstrap.com/docs/4.6/components/buttons/-->
