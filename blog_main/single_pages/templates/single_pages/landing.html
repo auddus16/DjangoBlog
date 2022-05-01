@@ -4,7 +4,7 @@
 {% endblock %}
 {% block main_area %}
 <h1>대문페이지</h1>
-    {% for post in recent_post %}
+    {% for post in recent_posts %}
     <p>{{ post.title }} - {{ post.hook }}</p>
     {% endfor %}
 {% endblock %}
